@@ -86,6 +86,43 @@ Object.assign(MediaElementPlayer.prototype, {
 				setTimeout(() => {
 					player.play();
 				}, 200);
+				//selects Item in playlist				var radios = player.playlistLayer.querySelectorAll('input[type="radio"]'),
+				    selected = player.playlistLayer.querySelectorAll('.' + player.options.classPrefix + 'playlist-selected');
+
+				for (var j = 0, total2 = radios.length; j < total2; j++) {
+					radios[j].checked = false;
+				}
+				for (var _j = 0, _total3 = selected.length; _j < _total3; _j++) {
+					mejs.Utils.removeClass(selected[_j], player.options.classPrefix + 'playlist-selected');
+					selected[_j].querySelector('label').querySelector('span').remove();
+				}
+
+				radios[player.currentPlaylistItem].checked = true;
+				radios[player.currentPlaylistItem].closest('.' + player.options.classPrefix + 'playlist-selector-list-item').querySelector('label').innerHTML = '<span>\u25B6</span> ' + radios[player.currentPlaylistItem].closest('.' + player.options.classPrefix + 'playlist-selector-list-item').querySelector('label').innerHTML;
+				mejs.Utils.addClass(radios[player.currentPlaylistItem].closest('.' + player.options.classPrefix + 'playlist-selector-list-item'), player.options.classPrefix + 'playlist-selected');
+
+			}else if(player.option.loop){
+				//checks if loop is active. if it is, restarts at track one
+				player.currentPlaylistItem = 0;
+				player.setSrc(player.playlist[0].src);
+				player.load();
+				setTimeout(function () {
+					player.play();
+				}, 200);
+				var radios = player.playlistLayer.querySelectorAll('input[type="radio"]'),
+				    selected = player.playlistLayer.querySelectorAll('.' + player.options.classPrefix + 'playlist-selected');
+
+				for (var j = 0, total2 = radios.length; j < total2; j++) {
+					radios[j].checked = false;
+				}
+				for (var _j = 0, _total3 = selected.length; _j < _total3; _j++) {
+					mejs.Utils.removeClass(selected[_j], player.options.classPrefix + 'playlist-selected');
+					selected[_j].querySelector('label').querySelector('span').remove();
+				}
+
+				radios[player.currentPlaylistItem].checked = true;
+				radios[player.currentPlaylistItem].closest('.' + player.options.classPrefix + 'playlist-selector-list-item').querySelector('label').innerHTML = '<span>\u25B6</span> ' + radios[player.currentPlaylistItem].closest('.' + player.options.classPrefix + 'playlist-selector-list-item').querySelector('label').innerHTML;
+				mejs.Utils.addClass(radios[player.currentPlaylistItem].closest('.' + player.options.classPrefix + 'playlist-selector-list-item'), player.options.classPrefix + 'playlist-selected');
 			}
 		};
 
@@ -225,6 +262,20 @@ Object.assign(MediaElementPlayer.prototype, {
 				player.setSrc(player.playlist[player.currentPlaylistItem].src);
 				player.load();
 				player.play();
+				var radios = player.playlistLayer.querySelectorAll('input[type="radio"]'),
+				selected = player.playlistLayer.querySelectorAll('.' + player.options.classPrefix + 'playlist-selected');
+
+				for (var j = 0, total2 = radios.length; j < total2; j++) {
+					radios[j].checked = false;
+				}
+				for (var _j = 0, _total3 = selected.length; _j < _total3; _j++) {
+					mejs.Utils.removeClass(selected[_j], player.options.classPrefix + 'playlist-selected');
+					selected[_j].querySelector('label').querySelector('span').remove();
+				}
+
+				radios[player.currentPlaylistItem].checked = true;
+				radios[player.currentPlaylistItem].closest('.' + player.options.classPrefix + 'playlist-selector-list-item').querySelector('label').innerHTML = '<span>\u25B6</span> ' + radios[player.currentPlaylistItem].closest('.' + player.options.classPrefix + 'playlist-selector-list-item').querySelector('label').innerHTML;
+				mejs.Utils.addClass(radios[player.currentPlaylistItem].closest('.' + player.options.classPrefix + 'playlist-selector-list-item'), player.options.classPrefix + 'playlist-selected');
 			} else {
 				++player.currentPlaylistItem;
 			}
@@ -250,6 +301,20 @@ Object.assign(MediaElementPlayer.prototype, {
 				player.setSrc(player.playlist[player.currentPlaylistItem].src);
 				player.load();
 				player.play();
+				var radios = player.playlistLayer.querySelectorAll('input[type="radio"]'),
+				selected = player.playlistLayer.querySelectorAll('.' + player.options.classPrefix + 'playlist-selected');
+
+				for (var j = 0, total2 = radios.length; j < total2; j++) {
+					radios[j].checked = false;
+				}
+				for (var _j = 0, _total3 = selected.length; _j < _total3; _j++) {
+					mejs.Utils.removeClass(selected[_j], player.options.classPrefix + 'playlist-selected');
+					selected[_j].querySelector('label').querySelector('span').remove();
+				}
+
+				radios[player.currentPlaylistItem].checked = true;
+				radios[player.currentPlaylistItem].closest('.' + player.options.classPrefix + 'playlist-selector-list-item').querySelector('label').innerHTML = '<span>\u25B6</span> ' + radios[player.currentPlaylistItem].closest('.' + player.options.classPrefix + 'playlist-selector-list-item').querySelector('label').innerHTML;
+				mejs.Utils.addClass(radios[player.currentPlaylistItem].closest('.' + player.options.classPrefix + 'playlist-selector-list-item'), player.options.classPrefix + 'playlist-selected');
 			} else {
 				--player.currentPlaylistItem;
 			}
